@@ -1,0 +1,49 @@
+<h1 class="page-title">კლიენტის ძებნა</h1>
+
+<div class="card">
+  <form [formGroup]="form" (ngSubmit)="search()" class="search-form">
+    <div class="field">
+      <label>სახელი</label>
+      <input type="text" formControlName="firstName" />
+    </div>
+    <div class="field">
+      <label>გვარი</label>
+      <input type="text" formControlName="lastName" />
+    </div>
+    <div class="field">
+      <label>კლიენტის უნიკალური</label>
+      <input type="text" formControlName="clientKey" />
+    </div>
+    <div class="search-action">
+      <button type="submit" class="btn-search">🔍</button>
+    </div>
+  </form>
+</div>
+
+@if (results().length) {
+  <div class="card">
+    <div class="card-head">
+      <span>კლიენტები</span>
+      <button class="btn-add" (click)="goToRegister()">+</button>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>სახელი</th>
+          <th>გვარი</th>
+          <th>კლიენტის უნიკალური</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (c of results(); track c.id) {
+          <tr (click)="openClient(c.id!)">
+            <td>{{ c.firstName }}</td>
+            <td>{{ c.lastName }}</td>
+            <td>{{ c.clientKey }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

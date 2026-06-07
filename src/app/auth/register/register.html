@@ -1,0 +1,95 @@
+<div class="auth-page">
+  <div class="auth-bg"></div>
+
+  <div class="auth-panel">
+    <div class="brand">
+      <img class="brand-mark" src="/logo.png"/>
+      <div>
+        <div class="brand-ka">საქართველოს ბანკი</div>
+        <div class="brand-en">BANK OF GEORGIA</div>
+      </div>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="field">
+        <input type="text" formControlName="name" placeholder="სახელი" />
+        @if (c('name').touched && c('name').invalid) {
+          <div class="field-error">
+            @if (c('name').errors?.['required']) {
+                აუცილებელი ველი
+            }
+            @else if (c('name').errors?.['minlength']) {
+                გთხოვთ შეიყვანოთ მინიმუმ {{ c('name').errors?.['minlength'].requiredLength }} სიმბოლო
+            }
+            @else if (c('name').errors?.['maxlength']) {
+                გთხოვთ შეიყვანოთ მაქსიმუმ {{ c('name').errors?.['maxlength'].requiredLength }} სიმბოლო
+            }
+          </div>
+        }
+      </div>
+
+      <div class="field">
+        <input type="text" formControlName="username" placeholder="მომხმარებელი" />
+        @if (c('username').touched && c('username').invalid) {
+          <div class="field-error">
+            @if (c('username').errors?.['required']) {
+                აუცილებელი ველი
+            }
+            @else if (c('username').errors?.['minlength']) {
+                გთხოვთ შეიყვანოთ მინიმუმ {{ c('username').errors?.['minlength'].requiredLength }} სიმბოლო
+            }
+            @else if (c('username').errors?.['maxlength']) {
+                გთხოვთ შეიყვანოთ მაქსიმუმ {{ c('username').errors?.['maxlength'].requiredLength }} სიმბოლო
+            }
+          </div>
+        }
+      </div>
+
+      <div class="field">
+        <input type="password" formControlName="password" placeholder="პაროლი" />
+        @if (c('password').touched && c('password').invalid) {
+          <div class="field-error">
+            @if (c('password').errors?.['required']) {
+                აუცილებელი ველი
+            }
+            @else if (c('password').errors?.['minlength']) {
+                გთხოვთ შეიყვანოთ მინიმუმ {{ c('password').errors?.['minlength'].requiredLength }} სიმბოლო
+            }
+            @else if (c('password').errors?.['maxlength']) {
+                გთხოვთ შეიყვანოთ მაქსიმუმ {{ c('password').errors?.['maxlength'].requiredLength }} სიმბოლო
+            }
+          </div>
+        }
+      </div>
+
+      <div class="field">
+        <input type="password" formControlName="confirmPassword" placeholder="გაიმეორეთ პაროლი" />
+        @if (c('confirmPassword').touched && c('confirmPassword').invalid) {
+          <div class="field-error">
+            @if (c('confirmPassword').errors?.['required']) {
+                აუცილებელი ველი
+            }
+            @else if (c('confirmPassword').errors?.['minlength']) {
+                გთხოვთ შეიყვანოთ მინიმუმ {{ c('confirmPassword').errors?.['minlength'].requiredLength }} სიმბოლო
+            }
+            @else if (c('confirmPassword').errors?.['maxlength']) {
+                გთხოვთ შეიყვანოთ მაქსიმუმ {{ c('confirmPassword').errors?.['maxlength'].requiredLength }} სიმბოლო
+            }
+          </div>
+        }
+        @if (form.errors?.['passwordMismatch'] && c('confirmPassword').touched) {
+          <div class="field-error">პაროლები არ ემთხვევა</div>
+        }
+      </div>
+
+      @if (errorMessage) {
+        <div class="field-error">{{ errorMessage }}</div>
+      }
+
+      <div class="actions">
+        <a routerLink="/auth" class="link">შესვლა</a>
+        <button type="submit" class="btn-primary">რეგისტრაცია</button>
+      </div>
+    </form>
+  </div>
+</div>

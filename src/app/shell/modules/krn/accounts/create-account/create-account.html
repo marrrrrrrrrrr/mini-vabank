@@ -1,0 +1,40 @@
+<h1 class="page-title">ანგარიშის შექმნა</h1>
+
+<div class="card">
+  <form [formGroup]="form" (ngSubmit)="save()" class="vform">
+    <div class="field">
+      <label>ანგარიშის სახელი</label>
+      <input type="text" formControlName="accountName" />
+      @if (c('accountName').touched && c('accountName').invalid) {
+        <div class="field-error">
+            @if (c('accountName').errors?.['required']) {
+            აუცილებელი ველი
+            }
+            @else if (c('accountName').errors?.['minlength']) {
+                გთხოვთ შეიყვანოთ მინიმუმ {{ c('accountName').errors?.['minlength'].requiredLength }} სიმბოლო
+            }
+            @else if (c('accountName').errors?.['maxlength']) {
+                გთხოვთ შეიყვანოთ მაქსიმუმ {{ c('accountName').errors?.['maxlength'].requiredLength }} სიმბოლო
+            }
+        </div>
+      }
+    </div>
+
+    <div class="field">
+        <label>თანხა</label>
+        <input type="number" formControlName="amount" min="0" />
+         @if (c('amount').touched && c('amount').invalid) {
+            <div class="field-error">
+                @if (c('amount').errors?.['min']) {
+                    გთხოვთ შეიყვანოთ მინიმუმ 0
+                }
+            </div>
+         }
+        </div>
+    
+
+    <div class="form-action">
+      <button type="submit" class="btn-save">💾</button>
+    </div>
+  </form>
+</div>

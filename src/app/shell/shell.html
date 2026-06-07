@@ -1,0 +1,13 @@
+<div class="layout">
+  <app-shell-header class="layout-header"></app-shell-header>
+
+  <div class="layout-body">
+    <app-shell-sidebar class="layout-sidebar"></app-shell-sidebar>
+
+    <main class="layout-main">
+      <div class="op-date">საოპერაციო თარიღი: {{ today | date: 'dd/MM/yyyy' }}</div>
+      <app-client-header></app-client-header>
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

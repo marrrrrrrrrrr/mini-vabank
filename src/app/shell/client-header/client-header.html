@@ -1,0 +1,28 @@
+@if (client(); as c) {
+  <div class="client-card">
+    <img class="client-photo" [src]="c.photo || '/logo.png'" alt="client" />
+
+    <div class="client-id">
+      <div class="client-name">{{ c.firstName }} {{ c.lastName }}</div>
+      <div class="client-key">უნიკალური კოდი: {{ c.clientKey }}</div>
+    </div>
+
+    <div class="client-stats">
+      <div class="stat">
+        <span class="stat-label">აქტივები:</span>
+        <span class="stat-value assets">{{ assets() | number: '1.2-2' }} GEL</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Plus:</span>
+        <span class="stat-value">{{ c.plusPoints || 0 }}</span>
+      </div>
+      <button class="btn-exit" (click)="exitClient()">გასვლა</button>
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <a routerLink="/krn/krnicp" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="tab">მთავარი</a>
+    <a routerLink="/krn/accounts" routerLinkActive="active" class="tab">ანგარიშები</a>
+    <a routerLink="/krn/operations" routerLinkActive="active" class="tab">ოპერაციები</a>
+  </nav>
+}

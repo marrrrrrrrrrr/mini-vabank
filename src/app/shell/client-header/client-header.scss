@@ -1,0 +1,73 @@
+:host { display: block; margin-bottom: 1.5rem; }
+
+.client-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--card);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 1rem 1.5rem;
+}
+
+.client-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+
+.client-id {
+  flex: 1;
+  .client-name { font-size: 1.1rem; font-weight: 600; }
+  .client-key { color: #777; font-size: 0.85rem; margin-top: 2.5rem; }
+}
+
+.client-stats {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+}
+
+.stat {
+  display: contents;
+  .stat-label { color: #9099a1; text-align: right; }
+  .stat-value { font-weight: 700; text-align: right; }
+  .assets { color: var(--bog-green); }
+}
+
+.btn-exit {
+  grid-column: 2;
+  justify-self: end;
+  background: var(--bog-red);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tabs {
+  display: flex;
+  background: var(--card);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  text-decoration: none;
+  color: #333;
+  border-right: 1px solid var(--border);
+
+  &:last-child { border-right: none; }
+  &:hover { background: #f7f8fa; }
+  &.active { background: #eceff2; font-weight: 600; }
+}

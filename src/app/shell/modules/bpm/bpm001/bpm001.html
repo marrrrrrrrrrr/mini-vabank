@@ -1,0 +1,54 @@
+<h1 class="page-title">კლიენტის რეგისტრაცია</h1>
+
+<div class="card">
+  <form [formGroup]="form" (ngSubmit)="save()" class="vform">
+    <div class="field">
+      <label>სახელი</label>
+      <input type="text" formControlName="firstName" />
+      @if (c('firstName').touched && c('firstName').invalid) {
+        <div class="field-error">
+          @if (c('firstName').errors?.['required']) { აუცილებელი ველი }
+          @else if (c('firstName').errors?.['minlength']) {
+                გთხოვთ შეიყვანოთ მინიმუმ {{ c('firstName').errors?.['minlength'].requiredLength }} სიმბოლო
+            }
+            @else if (c('firstName').errors?.['maxlength']) {
+                გთხოვთ შეიყვანოთ მაქსიმუმ {{ c('firstName').errors?.['maxlength'].requiredLength }} სიმბოლო
+            }
+        </div>
+      }
+    </div>
+
+    <div class="field">
+      <label>გვარი</label>
+      <input type="text" formControlName="lastName" />
+      @if (c('lastName').touched && c('lastName').invalid) {
+        <div class="field-error">
+          @if (c('lastName').errors?.['required']) { აუცილებელი ველი }
+          @else if (c('lastName').errors?.['minlength']) {
+                გთხოვთ შეიყვანოთ მინიმუმ {{ c('lastName').errors?.['minlength'].requiredLength }} სიმბოლო
+            }
+            @else if (c('lastName').errors?.['maxlength']) {
+                გთხოვთ შეიყვანოთ მაქსიმუმ {{ c('lastName').errors?.['maxlength'].requiredLength }} სიმბოლო
+            }
+        </div>
+      }
+    </div>
+
+    <div class="field">
+        <label>Plus ქულები</label>
+        <input type="number" formControlName="plusPoints" min="0"/>
+        @if (c('plusPoints').touched && c('plusPoints').invalid) {
+            <div class="field-error">
+                 @if (c('plusPoints').errors?.['min']) {
+                    გთხოვთ შეიყვანოთ მინიმუმ 0
+                }
+                </div>
+            
+        }
+    </div>
+
+    <div class="form-action">
+      <button type="submit" class="btn-save">💾</button>
+    </div>
+  </form>
+</div>

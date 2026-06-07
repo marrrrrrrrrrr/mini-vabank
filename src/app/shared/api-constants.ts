@@ -1,0 +1,2 @@
+export const API_URL = 'https://bog-angular-training-default-rtdb.asia-southeast1.firebasedatabase.app';
+export const TRANSFER_URL = 'https://bogi-13529-default-rtdb.europe-west1.firebasedatabase.app/bpm_operations';

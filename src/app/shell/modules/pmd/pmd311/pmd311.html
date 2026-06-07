@@ -1,0 +1,41 @@
+<h1 class="page-title">თანხის გადარიცხვა</h1>
+
+<div class="card">
+  <form [formGroup]="form" (ngSubmit)="save()" class="vform">
+    <div class="field">
+      <label>გამგზავნი ანგარიში</label>
+      <select formControlName="senderAccountKey">
+        <option value="">აირჩიე</option>
+        @for (a of list(); track a.id) {
+          <option [value]="a.id">{{ a.accountName }} ({{ a.amount | number: '1.2-2' }})</option>
+        }
+      </select>
+    </div>
+
+    <div class="field">
+      <label>მიმღები ანგარიში</label>
+      <select formControlName="receiverAccountKey">
+        <option value="">აირჩიე</option>
+        @for (a of list(); track a.id) {
+          <option [value]="a.id">{{ a.accountName }} ({{ a.amount | number: '1.2-2' }})</option>
+        }
+      </select>
+    </div>
+
+    <div class="field">
+        <label>თანხა</label>
+        <input type="number" formControlName="amount" min="0" />
+        @if (c('amount').touched && c('amount').invalid) {
+            <div class="field-error">
+                @if (c('amount').errors?.['min']) {
+                    გთხოვთ შეიყვანოთ მინიმუმ 0
+                }
+            </div>
+        }
+    </div>
+
+    <div class="form-action">
+      <button type="submit" class="btn-transfer">🔁</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,31 @@
+<h1 class="page-title">ანგარიშები</h1>
+
+<div class="card">
+  <div class="card-head">
+    <span>ანგარიშები</span>
+    <button class="btn-add" (click)="goToCreate()">+</button>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>მფლობელი</th>
+        <th>სახელი</th>
+        <th>თანხა</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (a of list(); track a.id) {
+        <tr>
+          <td>{{ a.ownerName }}</td>
+          <td>{{ a.accountName }}</td>
+          <td class="amount">{{ a.amount | number: '1.2-2' }}</td>
+          <td class="trash-cell">
+            <button class="btn-trash" (click)="deleteAccount(a.id!, $event)">🗑</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

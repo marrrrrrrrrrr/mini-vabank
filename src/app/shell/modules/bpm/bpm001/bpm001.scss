@@ -1,0 +1,41 @@
+.page-title {
+  font-size: 1.8rem;
+  margin: 0 0 1rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+}
+
+.vform {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 640px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+
+  label { font-size: 0.85rem; margin-bottom: 0.4rem; color: #555; }
+  input {
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    outline: none;
+  }
+}
+
+.btn-save {
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 40px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
